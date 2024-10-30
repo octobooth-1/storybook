@@ -9,7 +9,7 @@ import { logger } from '@storybook/core/node-logger';
 import { findUpSync } from 'find-up';
 import prompts from 'prompts';
 import semver from 'semver';
-
+import _ from 'lodash';
 import { isNxProject } from './helpers';
 import type { TemplateConfiguration, TemplateMatcher } from './project_types';
 import {
@@ -70,6 +70,7 @@ const getFrameworkPreset = (
 
   // Must check the length so the `[false]` isn't overwritten if `{ dependencies: [] }`
   if (dependencySearches.length > 0) {
+    console.log(_.contains([1,2,3], 1));
     matcher.dependencies = dependencySearches.map(([name, matchFn]) =>
       hasDependency(packageJson, name, matchFn)
     );
